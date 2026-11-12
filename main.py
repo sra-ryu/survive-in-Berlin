@@ -3,6 +3,15 @@ import player
 import event_lost_key
 
 TOTAL_MONTHS = 12
+MONTHLY_LIVING_COST = 992  # based on Sperrkonto minimum
+
+ALL_EVENTS = [
+    event_lost_key.lost_key_event,
+]
+
+def schedule_events():
+    months = random.sample(range(1, TOTAL_MONTHS + 1), len(ALL_EVENTS))
+    return {month: event for month, event in zip(months, ALL_EVENTS)}
 
 def introduce_player(p):
     print(f"\nHi, I'm {p['name']}. Now I have {p['money']} EUR for my first year in Berlin.")
@@ -16,11 +25,16 @@ def show_status(p, month):
     print(f"Residence: {player.RESIDENCE[p['residence']]}")
 
 def game_loop(p):
+    schedule = schedule_events()
+
     for month in range(1, TOTAL_MONTHS + 1):
         show_status(p, month)
 
-        if random.random() < 0.3:
-            event_lost_key.lost_key_event(p)
+        if month in schedule:
+            schedule[month](p)
+
+        p["money"] -= MONTHLY_LIVING_COST
+        print(f"Living costs: -{MONTHLY_LIVING_COST} EUR")
 
         if p["money"] <= 0:
             print("\nYou ran out of money. Game over.")
