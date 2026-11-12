@@ -29,6 +29,7 @@ def game_loop(p):
 
     for month in range(1, TOTAL_MONTHS + 1):
         show_status(p, month)
+        player.check_german_level_up(p, month)
 
         if month in schedule:
             schedule[month](p)
