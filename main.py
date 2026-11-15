@@ -3,6 +3,7 @@ import player
 import utils
 import event_lost_key
 import event_find_home
+import event_find_job
 
 TOTAL_MONTHS = 12
 MONTHLY_LIVING_COST = 992  # based on Sperrkonto minimum
@@ -31,10 +32,12 @@ def game_loop(p):
     for month in range(1, TOTAL_MONTHS + 1):
         print(f"\n=== Month {month} / {TOTAL_MONTHS} ===")
         event_find_home.move_in_if_ready(p)
+        event_find_job.start_job_if_ready(p)
         show_status(p)
         player.check_german_level_up(p, month)
 
         event_find_home.find_home_event(p)
+        event_find_job.find_job_event(p)
 
         if month in schedule:
             schedule[month](p)
@@ -45,6 +48,8 @@ def game_loop(p):
         rent = player.RENT[player.RESIDENCE[p["residence"]]]
         p["money"] -= rent
         print(f"Rent: -{rent} EUR")
+
+        event_find_job.pay_salary(p)
 
         if p["money"] <= 0:
             print("\nYou ran out of money. Game over.")

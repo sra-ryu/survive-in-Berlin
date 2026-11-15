@@ -25,6 +25,8 @@ def create_player():
         "german_level": german_level,
         "residence": residence,
         "next_residence": None,
+        "job": None,
+        "next_job": None,
         "german_next_attempt": 3,
         "german_next_prob": 1.0,
     }
