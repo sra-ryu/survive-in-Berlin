@@ -52,6 +52,9 @@ def _schedule_next_attempt(p, month, level_idx):
     elif level == "B2":
         p["german_next_attempt"] = month + 3
         p["german_next_prob"] = 0.25
+    elif level == "B1":
+        p["german_next_attempt"] = month + 3
+        p["german_next_prob"] = 0.5
     else:
         p["german_next_attempt"] = month + 3
         p["german_next_prob"] = 1.0
