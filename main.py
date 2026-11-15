@@ -1,5 +1,6 @@
 import random
 import player
+import utils
 import event_lost_key
 import event_find_home
 
@@ -48,6 +49,8 @@ def game_loop(p):
         if p["money"] <= 0:
             print("\nYou ran out of money. Game over.")
             return
+
+        utils.pause()
 
     print(f"\nYou survived a year in Berlin! Money remaining: {p['money']} EUR.")
 
