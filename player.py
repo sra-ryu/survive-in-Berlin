@@ -5,6 +5,11 @@ MAX_START_MONEY = 20000
 
 GERMAN_LEVEL = ["A1", "A2", "B1", "B2", "C1", "C2"]
 RESIDENCE = ["WG", "studio", "dormitory", "temporary residence"]
+RENT = {
+    "WG": 300,
+    "studio": 400,
+    "temporary residence": 500,
+}
 
 def create_player():
     name = input("Enter your name: ")
@@ -19,6 +24,7 @@ def create_player():
         "status": status,
         "german_level": german_level,
         "residence": residence,
+        "next_residence": None,
         "german_next_attempt": 3,
         "german_next_prob": 1.0,
     }
