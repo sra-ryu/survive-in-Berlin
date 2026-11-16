@@ -2,12 +2,12 @@ import random
 
 ITEMS_PER_ROUND = 5
 
-# bin number -> (color, what goes in)
+# bin number -> color
 BINS = {
-    "1": ("blue", "paper"),
-    "2": ("black", "general waste"),
-    "3": ("brown", "bio"),
-    "4": ("yellow", "packaging"),
+    "1": "blue",
+    "2": "black",
+    "3": "brown",
+    "4": "yellow",
 }
 
 # item -> correct bin number
@@ -35,8 +35,8 @@ GRANDMA_LINES = [
 ]
 
 def _show_bins():
-    for number, (color, kind) in BINS.items():
-        print(f"  {number}. {color.capitalize()} bin ({kind})")
+    for number, color in BINS.items():
+        print(f"  {number}. {color.capitalize()} bin")
 
 def _sort_item(item):
     print(f"\nYou pick up: {item}")
@@ -48,7 +48,7 @@ def _sort_item(item):
         print("Plop! Into the right bin.")
         return True
 
-    color, _ = BINS[correct]
+    color = BINS[correct]
     print("An old German lady suddenly appears from behind the bins...")
     print(f'Grandma: "{random.choice(GRANDMA_LINES)} The {item} goes in the {color.upper()} bin!"')
     return False
