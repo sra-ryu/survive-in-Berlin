@@ -4,17 +4,24 @@ import utils
 import event_lost_key
 import event_find_home
 import event_find_job
+import event_trash_sorting
 
 TOTAL_MONTHS = 12
 MONTHLY_LIVING_COST = 992  # based on Sperrkonto minimum
 
+# (event, months it can happen in)
 ALL_EVENTS = [
-    event_lost_key.lost_key_event,
+    (event_lost_key.lost_key_event, range(1, TOTAL_MONTHS + 1)),
+    (event_trash_sorting.trash_sorting_event, range(1, 4)),
 ]
 
 def schedule_events():
-    months = random.sample(range(1, TOTAL_MONTHS + 1), len(ALL_EVENTS))
-    return {month: event for month, event in zip(months, ALL_EVENTS)}
+    schedule = {}
+    # place events with fewer possible months first so they always get a slot
+    for event, months in sorted(ALL_EVENTS, key=lambda e: len(e[1])):
+        free_months = [m for m in months if m not in schedule]
+        schedule[random.choice(free_months)] = event
+    return schedule
 
 def introduce_player(p):
     print(f"\nHi, I'm {p['name']}. Now I have {p['money']} EUR for my first year in Berlin.")
