@@ -61,9 +61,11 @@ def trash_sorting_event(p):
     score = sum(_sort_item(item) for item in items)
 
     print(f"\nYou sorted {score} / {ITEMS_PER_ROUND} items correctly.")
+    print(result_message(score))
+
+def result_message(score):
     if score == ITEMS_PER_ROUND:
-        print('Grandma nods from her window: "Sehr gut. You are almost German now."')
-    elif score >= ITEMS_PER_ROUND - 2:
-        print("Not bad. Grandma is still watching you, though.")
-    else:
-        print("Grandma sighs and starts re-sorting the bins herself.")
+        return 'Grandma nods from her window: "Sehr gut. You are almost German now."'
+    if score >= ITEMS_PER_ROUND - 2:
+        return "Not bad. Grandma is still watching you, though."
+    return "Grandma sighs and starts re-sorting the bins herself."
