@@ -32,3 +32,6 @@ htmlcov/
 # Claude
 memory/
 CLAUDE.md
+
+# Local progress log
+DEV_NOTES.md
