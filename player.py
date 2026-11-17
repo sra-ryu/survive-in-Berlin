@@ -1,18 +1,19 @@
 import random
 
-MIN_START_MONEY = 11904  # about one year of blocked account
+MIN_START_MONEY = 14400  # 1200 EUR x 12 months, minimum to live in Berlin
 MAX_START_MONEY = 20000
 
 GERMAN_LEVEL = ["A1", "A2", "B1", "B2", "C1", "C2"]
 RESIDENCE = ["WG", "studio", "dormitory", "temporary residence"]
 RENT = {
-    "WG": 300,
-    "studio": 400,
-    "temporary residence": 500,
+    "WG": 650,
+    "studio": 750,
+    "temporary residence": 800,
 }
 
-def create_player():
-    name = input("Enter your name: ")
+def create_player(name=None):
+    if name is None:
+        name = input("Enter your name: ")
     money = random.randint(MIN_START_MONEY, MAX_START_MONEY)
     status = "language learner"
     german_level = GERMAN_LEVEL.index("A1")

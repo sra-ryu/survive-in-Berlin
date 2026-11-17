@@ -7,7 +7,7 @@ import event_find_job
 import event_trash_sorting
 
 TOTAL_MONTHS = 12
-MONTHLY_LIVING_COST = 992  # based on Sperrkonto minimum
+MONTHLY_LIVING_COST = 550  # without rent; with a WG (650) this makes the 1200 EUR minimum
 
 # (event, months it can happen in)
 ALL_EVENTS = [
