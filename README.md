@@ -2,8 +2,6 @@
 
 A small text-based survival game about spending your first year in Berlin as a foreigner.
 
-[한국어](#한국어)
-
 ## About
 
 I live in Berlin, and I wanted to turn the things I went through as a foreigner here into a game.
